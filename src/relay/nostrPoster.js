@@ -1,5 +1,5 @@
 import { getEventHash, signEvent, relayInit, getPublicKey, nip19,} from "nostr-tools";
-import { relays, botNsec } from "../config.js";
+import { relays, botNsec } from "../configLoader.js";
 
 export async function postToNostr(content, tags = []) {
   const { data: sk } = nip19.decode(botNsec);

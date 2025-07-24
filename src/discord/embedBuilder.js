@@ -3,6 +3,7 @@ import { EmbedBuilder } from "discord.js";
 import { findTargetNoteId, extractSenderPubkey } from "../utils/helpers.js";
 import { findMatchingEmoji } from "../utils/emojiResolver.js";
 import { fetchProfile } from "../utils/profileFetcher.js";
+import { toNoteBech32 } from "../utils/nostrUtils.js";
 
 function getEmbedColor(kind) {
   switch (kind) {
@@ -42,12 +43,12 @@ export async function buildRepostEmbed(event, relayUrl) {
 
 export async function buildReactionEmbed(event, relayUrl, bot) {
   const emojiText = event.content || "😊";
-  const noteId = findTargetNoteId(event);
+  const noteUrl = `https://nostter.app/${toNoteBech32(event.id)}`;
   const profile = await fetchProfile(event.pubkey);
 
   const embed = new EmbedBuilder()
     .setTitle(`😊 Reaction: ${emojiText}`)
-    .setDescription(`📎 [ノートを開く →](https://nostter.vercel.app/e/${noteId})`)
+    .setDescription(`📎 [ノートを開く](${noteUrl})`)
     .setColor(getEmbedColor(7))
     .setFooter({ text: `from ${relayUrl}` });
 
@@ -56,7 +57,7 @@ export async function buildReactionEmbed(event, relayUrl, bot) {
       .setAuthor({
         name: profile.display_name,
         iconURL: profile.picture || undefined,
-        url: `https://nostter.vercel.app/${profile.npub}`,
+        url: `https://nostter.app/${profile.npub}`,
       })
       .addFields(
         { name: "Sender", value: profile.display_name, inline: true },

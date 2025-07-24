@@ -1,5 +1,5 @@
 import { Client, GatewayIntentBits, Partials } from "discord.js";
-import { botToken } from "../config.js";
+//import { botToken } from "../configLoader.js";
 import { postToNostr } from "../relay/nostrPoster.js";
 
 export const bot = new Client({

@@ -1,5 +1,7 @@
 import { relayInit, nip19 } from "nostr-tools";
-import { relays } from "../config.js";
+import { getConfig } from "../configLoader.js";
+
+const relays = getConfig("RELAYS");
 
 export async function fetchProfile(pubkey) {
   for (const url of relays) {

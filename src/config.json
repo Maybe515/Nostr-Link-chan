@@ -1,0 +1,20 @@
+{
+  "RELAYS": [
+    "wss://relay.nostr.wirednet.jp",
+    "wss://relay-jp.nostr.wirednet.jp",
+    "wss://nostr.fediverse.jp",
+    "wss://yabu.me",
+    "wss://nrelay-jp.c-stellar.net",
+    "wss://nrelay.c-stellar.net",
+    "wss://r.kojira.io",
+    "wss://relay-jp.shino3.net",
+    "wss://relay.barine.co",
+    "wss://nostrja-kari.heguro.com"
+  ],
+  "FILTERS": [
+    {
+      "kinds": [1, 6, 7, 9735],
+      "#p": ["2b0e1b5a4162a4482e8dc912cef6edf4c45a9afceab09213b7b8a7841d09a8e4"]
+    }
+  ]
+}

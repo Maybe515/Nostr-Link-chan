@@ -1,8 +1,11 @@
 import { buildGenericEmbed, buildReplyEmbed, buildRepostEmbed, buildReactionEmbed, buildZapEmbed,} from "../discord/embedBuilder.js";
-import { notificationChannelId } from "../config.js";
+import { getConfig } from "../configLoader.js";
+
+const channelId = getConfig("NOTIF_CHANNEL_ID");
+const notifiedEventIds = new Set();
 
 export async function handleEvent(event, relayUrl, bot) {
-  const channel = await bot.channels.fetch(notificationChannelId);
+  const channel = await bot.channels.fetch(channelId);
   if (!channel) return;
 
   let embed;
@@ -14,5 +17,16 @@ export async function handleEvent(event, relayUrl, bot) {
     default: embed = await buildGenericEmbed(event, relayUrl);
   }
 
-  channel.send({ embeds: [embed] });
+  if (shouldNotify(event)) {
+    channel.send({ embeds: [embed] });
+  } 
+}
+
+export function shouldNotify(event) {
+  if (notifiedEventIds.has(event.id)) {
+    console.log(`⛔ 重複イベント検知：${event.id}`);
+    return false;
+  }
+  notifiedEventIds.add(event.id);
+  return true;
 }
