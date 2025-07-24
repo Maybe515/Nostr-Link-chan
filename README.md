@@ -1,1 +1,1 @@
-# nostr-link-chan
+# NostrとDiscordをつなぐ、小さな橋。のすとらリンクちゃん！
