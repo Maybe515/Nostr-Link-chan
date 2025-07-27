@@ -1,15 +1,16 @@
-# NostrとDiscordをつなぐ、小さな橋。のすとらリンクちゃん！
+# NostrとDiscordをつなぐ、小さな橋。のすとらリンクちゃん！（さくせ～ちゅ～）
 のすとらリンクちゃんは、**Nostrイベントをリアルタイム検知し、Discord上に通知するBot**です。<br>
 Zap・投稿・リアクションなどを購読し、WebhookまたはEmbed形式で通知を行います。<br>
 <br>
 
-## 📦 機能概要
+## 機能概要
 - **Relay購読**：指定公開鍵の関連イベント（kind 1, 6, 7, 9735）を購読
 - **Zapや投稿をDiscord通知**（Embed／Webhook）
 - **設定分離構成**：`.env` + `config.json` で柔軟管理
 - **重複通知防止**：`event.id` 判定による1回限り通知
 - **note1形式リンク生成**：イベントIDを人間向けURLに変換
 - **リアルタイム購読**：過去イベントは除外（`since`フィルター）
+<br>
 
 ## 🔧 環境構成
 ### `.env`（機密情報）
@@ -22,6 +23,7 @@ WEBHOOK_URL=https://discord.com/api/webhooks/xxxxx/yyyyy
 WEBHOOK_USERNAME=のすとらリンクちゃん
 WEBHOOK_AVATAR=https://example.com/avatar.png
 ```
+<br>
 
 # 起動方法
 ```
@@ -29,6 +31,7 @@ WEBHOOK_AVATAR=https://example.com/avatar.png
 npm install
 node src/index.js
 ```
+<br>
 
 # ディレクトリ構成
 ```
@@ -41,6 +44,7 @@ src/
 │   └── eventHandler.js    # 通知処理・重複防止チェック
 ├── index.js               # Bot起動エントリーポイント
 ```
+<br>
 
 # 補足仕様
 - `.env` から読み取った公開鍵は hex形式（64文字）で指定してください
