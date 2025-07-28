@@ -29,16 +29,17 @@ Zap・投稿・リアクションなどを購読し、WebhookまたはEmbed形�
 📂 nostr-link-chan/
 ├── 📂 src/
 │   ├── 📂 discord/          
-│   │   ├── bot.js             # プロフィール表示用のEmbed通知の整形
-│   │   └── embedBuilder.js    # 設定のキャッシュ・読み書き
+│   │   ├── bot.js             # ボット起動
+│   │   └── embedBuilder.js    # Embed通知の整形・テンプレート
 │   ├── 📂 relay/
-│   │   ├── connection.js      # プロフィール表示用のEmbed通知の整形
-│   │   ├── eventHandler.js    # プロフィール表示用のEmbed通知の整形
-│   │   └── nostrPoster.js     # Nostr購読・通知フィルタ処理
+│   │   ├── connection.js      # リレー接続・イベント購読
+│   │   ├── eventHandler.js    # イベントハンドル
+│   │   └── nostrPoster.js     # Nostrポスト用
 │   ├── 📂 utils/
-│   │   ├── emojiResolver.js   # 重複イベント検知
-│   │   ├── helpers.js         # アバター画像アップロード
-│   │   └── profileFetcher.js  # 
+│   │   ├── emojiResolver.js   # 絵文字の検索
+│   │   ├── helpers.js         # ターゲット検索時に使用する関数
+│   │   └── profileFetcher.js  # プロフィール取得
+│   ├── config.js              # 設定ファイル読み込み
 │   └── index.js               # Botの起動処理（エントリポイント）
 ├── 📄 .env                    # トークンやIDの環境変数
 └── 📄 README.md
@@ -47,13 +48,11 @@ Zap・投稿・リアクションなどを購読し、WebhookまたはEmbed形�
 
 ### 必要な環境変数（.env）
 ```env
-TARGET_PUBKEY=abcdef1234567890deadbeefcafebabe...
 BOT_TOKEN=your_discord_bot_token
 BOT_NSEC=nsec1xxx...
+TARGET_PUBKEY=abcdef1234567890deadbeefcafebabe...
 NOTIF_CHANNEL_ID=123456789012345678
-WEBHOOK_URL=https://discord.com/api/webhooks/xxxxx/yyyyy
-WEBHOOK_USERNAME=のすとらリンクちゃん
-WEBHOOK_AVATAR=https://example.com/avatar.png
+RELAYS=["wss//example.com", "wss//example2.com", ...]
 ```
 <br>
 
