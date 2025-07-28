@@ -1,4 +1,4 @@
-# NostrとDiscordをつなぐ、小さな橋。のすとらリンクちゃん！（さくせ～ちゅ～）
+# NostrとDiscordをつなぐ、小さな橋。のすとらリンクちゃん！
 のすとらリンクちゃんは、**Nostrイベントをリアルタイム検知し、Discord上に通知するBot**です。<br>
 Zap・投稿・リアクションなどを購読し、WebhookまたはEmbed形式で通知を行います。<br>
 <br>
@@ -34,7 +34,7 @@ Zap・投稿・リアクションなどを購読し、WebhookまたはEmbed形�
 │   ├── 📂 relay/
 │   │   ├── connection.js      # リレー接続・イベント購読
 │   │   ├── eventHandler.js    # イベントハンドル
-│   │   └── nostrPoster.js     # Nostrポスト用
+│   │   └── nostrPoster.js     # Nostrポスト用（作成中）
 │   ├── 📂 utils/
 │   │   ├── emojiResolver.js   # 絵文字の検索
 │   │   ├── helpers.js         # ターゲット検索時に使用する関数
@@ -70,4 +70,8 @@ npm start
 - `.env` から読み取った公開鍵は hex形式（64文字）で指定してください
 - イベント購読には `since` を適用し、過去のイベントは通知されません
 - Relay接続は5回までリトライされ、失敗時はコンソールにログ出力されます
-- 通知には note1形式のURLを含め、Nostrビューアと連携可能
+- 通知には note1形式のURLを含め、Nostrウェブビューアと連携
+<br>
+
+# 追加予定
+- DiscordからNostrへのポスト・リプ機能
